@@ -18,11 +18,24 @@ const fixturesPath = join(__dirname, '..', 'src', 'fixtures')
 // We are relying on a simple `http` since we don't need the urges of a
 // fully blown server like `express` is such.
 const server = createServer((req, res) => {
-
     // We need to parse the URL since we are only using the `createServer`
     // method from node's `http` module. Hence we are using the url parser
     // from node to get the correct query parameters.
-    const query = parse(req.url, true).query;
+    const { query, ...url } = parse(req.url, true)
+
+    // Implementing some sort of routing. We are implementing a custom route
+    // named "/ping" which can be accessed by the Pingdom service. We are
+    // using this one to ensure, that the server is online and available.
+    //
+    // This endpoint simply returns "pong" as plain text, to ensure the server
+    // is online.
+    if (url.pathname === '/ping') {
+        res.writeHead(401, { 'Content-Type': 'text/plain' });
+        res.write('Please specify `secret`.');
+        res.end();
+
+        return
+    }
 
     // This snippet is also important for the security measurements of the
     // server.
