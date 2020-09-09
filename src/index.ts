@@ -1,4 +1,5 @@
 import {createServer} from 'http'
+import { join } from 'path'
 import { parse } from 'url'
 import { createCanvas, loadImage, registerFont } from 'canvas'
 import drawMultiline from "./utils/drawMultiline";
@@ -11,6 +12,8 @@ require('dotenv').config()
 // script is being hosted on
 if (!process.env.GENERATION_SECRET)
     process.exit(126)
+
+const fixturesPath = join(__dirname, '..', 'src', 'fixtures')
 
 // We are relying on a simple `http` since we don't need the urges of a
 // fully blown server like `express` is such.
@@ -61,7 +64,7 @@ const server = createServer((req, res) => {
     // ctx.quality = 'bilinear'
 
     // Register the correct font, so we are sure, that the image looks good.
-    registerFont('fixtures/fonts/Cabin-Bold.ttf', { family: 'Cabin' })
+    registerFont(join(fixturesPath, 'fonts', 'Cabin-Bold.ttf'), { family: 'Cabin' })
 
     // And afterwards set the font for the whole context. So, when we are
     // adding another text anywhere, we are also using the right font and
@@ -71,7 +74,7 @@ const server = createServer((req, res) => {
     // Load the template image. We are not putting everything ourself on the
     // canvas, instead, we are using a transparent image with the things that
     // won't change through the system.
-    loadImage('fixtures/template-de.png').then((image) => {
+    loadImage(join(fixturesPath, 'template-de.png')).then((image) => {
         ctx.drawImage(image, 0, 0, 1200, 1200)
 
         // Use the multiline utility, because we rely on longer texts than
