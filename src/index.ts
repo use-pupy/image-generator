@@ -99,6 +99,16 @@ const server = createServer((req, res) => {
         drawMultiline(ctx, content as string)
 
 
+        if (query.format === 'base64') {
+            const canvasUrl = canvas.toDataURL()
+
+            res.writeHead(200, { 'Content-Type': 'application/json' })
+            res.write({ url: canvasUrl })
+            res.end();
+
+            return
+        }
+
         // Write the image to the response, we need to set some options, so the
         // quality is not corrupt.
         const canvasBuffer = canvas.toBuffer('image/jpeg', { quality: 1, progressive: true })
