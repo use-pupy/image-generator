@@ -1,6 +1,6 @@
 {
   "name": "@pupy/image-gen",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "src/index.js",
   "repository": "git@github.com:pupy-app/image-generator.git",
   "author": "Nick Schmidt <nick@kreativgebiet.com>",
