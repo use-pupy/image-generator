@@ -98,12 +98,11 @@ const server = createServer((req, res) => {
         // hence we need to calculate on our side.
         drawMultiline(ctx, content as string)
 
-
         if (query.format === 'base64') {
             const canvasUrl = canvas.toDataURL()
 
             res.writeHead(200, { 'Content-Type': 'application/json' })
-            res.write({ url: canvasUrl })
+            res.write('{ "url": "' + canvasUrl + '" }')
             res.end();
 
             return
