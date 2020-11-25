@@ -61,7 +61,7 @@ const server = createServer((req, res) => {
         return
     }
 
-    const { content, color = '#fe7155' } = query
+    const { content, locale = 'de', color = '#fe7155' } = query
     const canvas = createCanvas(1200, 1200)
     const ctx = canvas.getContext('2d')
 
@@ -87,7 +87,7 @@ const server = createServer((req, res) => {
     // Load the template image. We are not putting everything ourself on the
     // canvas, instead, we are using a transparent image with the things that
     // won't change through the system.
-    loadImage(join(fixturesPath, 'template-de.png')).then((image) => {
+    loadImage(join(fixturesPath, `template-${locale}.png`)).then((image) => {
         ctx.drawImage(image, 0, 0, 1200, 1200)
 
         // Use the multiline utility, because we rely on longer texts than
