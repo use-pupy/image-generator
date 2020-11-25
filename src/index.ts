@@ -31,7 +31,7 @@ const server = createServer((req, res) => {
     // is online.
     if (url.pathname === '/ping') {
         res.writeHead(401, { 'Content-Type': 'text/plain' });
-        res.write('Please specify `secret`.');
+        res.write('UP');
         res.end();
 
         return
