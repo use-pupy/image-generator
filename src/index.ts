@@ -98,9 +98,12 @@ const server = createServer((req, res) => {
         // hence we need to calculate on our side.
         drawMultiline(ctx, content as string)
 
+        // When we are using an API-driven system, we are returning the base64,
+        // so that the system can adopt the base64 easily and return it itself.
         if (query.format === 'base64') {
             const canvasUrl = canvas.toDataURL()
 
+            // Of course, do not forget to use json response type.
             res.writeHead(200, { 'Content-Type': 'application/json' })
             res.write('{ "url": "' + canvasUrl + '" }')
             res.end();
