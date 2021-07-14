@@ -12,7 +12,7 @@
     "heroku-postbuild": "yarn build"
   },
   "devDependencies": {
-    "@types/node": "^14.6.4",
+    "@types/node": "^16.3.2",
     "nodemon": "^2.0.4",
     "ts-node": "^9.0.0"
   },
