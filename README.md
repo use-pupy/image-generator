@@ -2,11 +2,13 @@
 
 ### Features
 
-- :lock: Security through simple plain text environment variable secret
-- :seedling: Ability to host on Heroku
-- :memo: Multiline text on `node-canvas`
-- :package: Simple server, without any unnecessary dependencies.
-- :alembic: Coming soon: CLI for integration into your existing workflow
+| X | Feature |
+| - | - |
+| :lock: | Security through simple plain text environment variable secret |
+| :seedling: | Ability to host on Heroku |
+| :memo: | Multiline text on `node-canvas` |
+| :package: | Simple server, without any unnecessary dependencies. |
+| :alembic: | Coming soon: CLI for integration into your existing workflow |
 
 ### Table of contents
 
